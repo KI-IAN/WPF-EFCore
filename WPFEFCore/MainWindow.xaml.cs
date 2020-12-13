@@ -38,12 +38,15 @@ namespace WPFEFCore
         public override void EndInit()
         {
             base.EndInit();
-            lvUser.ItemsSource = _studentRepository.GetStudents();
+            lvUser.ItemsSource = _studentRepository.GetAll();
         }
 
         private void lvUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var selectedData = e.AddedItems[0] as DAL.Models.Student;
 
+            StudentDetailPage detailPage = new StudentDetailPage(selectedData);
+            this.NavigationService.Navigate(detailPage);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

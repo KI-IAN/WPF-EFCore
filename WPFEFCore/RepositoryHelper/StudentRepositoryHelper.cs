@@ -18,7 +18,7 @@ namespace WPFEFCore.RepositoryHelper
 
 
 
-        public List<DAL.Models.Student> GetStudents()
+        public List<DAL.Models.Student> GetAll()
         {
             var students = _dbContext.Student;
 
@@ -27,7 +27,7 @@ namespace WPFEFCore.RepositoryHelper
         }
 
 
-        public bool CreateStudent(DAL.Models.Student student)
+        public bool Create(DAL.Models.Student student)
         {
             _dbContext.Student.Add(student);
             _dbContext.SaveChanges();
@@ -37,6 +37,33 @@ namespace WPFEFCore.RepositoryHelper
             return studentId > 0;
         }
 
+
+        public bool Update(DAL.Models.Student student)
+        {
+            var dbData = _dbContext.Student.Where(r => r.StudentId == student.StudentId).FirstOrDefault();
+
+            dbData.StudentName = student.StudentName;
+            dbData.StandardId = student.StandardId;
+
+            var totalUddatedEntry = _dbContext.SaveChanges();
+
+            var isUpdateSuccessful = totalUddatedEntry > 0;
+
+            return isUpdateSuccessful;
+        }
+
+
+        public bool Delete(int studentId)
+        {
+            var dbData = _dbContext.Student.Where(r => r.StudentId == studentId).FirstOrDefault();
+
+            _dbContext.Student.Remove(dbData);
+            var totalDeletedEntry = _dbContext.SaveChanges();
+
+            var isDeletionSuccessful = totalDeletedEntry > 0;
+
+            return isDeletionSuccessful;
+        }
 
     }
 }

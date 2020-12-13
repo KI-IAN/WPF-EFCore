@@ -45,7 +45,7 @@ namespace WPFEFCore
             
             };
 
-            var isInsertSuccessful = _studentRepo.CreateStudent(student);
+            var isInsertSuccessful = _studentRepo.Create(student);
 
             var message = isInsertSuccessful ? "New student is creted successfully" : "Ops! something went wrong. New student could not be created. Please try again later.";
 
