@@ -18,38 +18,37 @@ namespace WPFEFCore
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Page
     {
         private RepositoryHelper.StudentRepositoryHelper _studentRepository;
 
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
 
         public override void BeginInit()
         {
             base.BeginInit();
-
             _studentRepository = new RepositoryHelper.StudentRepositoryHelper();
-
-
         }
 
 
         public override void EndInit()
         {
             base.EndInit();
-
             lvUser.ItemsSource = _studentRepository.GetStudents();
-
         }
 
         private void lvUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("NewStudentPage.xaml", UriKind.Relative));
         }
     }
 }

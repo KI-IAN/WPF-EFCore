@@ -1,4 +1,4 @@
-﻿<Window
+﻿<Page
     x:Class="WPFEFCore.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,11 +9,20 @@
     Width="800"
     Height="450"
     mc:Ignorable="d">
-    <Grid>
+
+
+    <StackPanel>
+
+
+        <Button
+            Width="100"
+            HorizontalAlignment="Left"
+            Click="Button_Click"
+            Content="Create Student" />
 
         <ListView
             Name="lvUser"
-            Margin="10"
+            Margin="10,60,62,60"
             SelectionChanged="lvUser_SelectionChanged">
 
             <ListView.View>
@@ -42,5 +51,6 @@
         </ListView>
 
 
-    </Grid>
-</Window>
+
+    </StackPanel>
+</Page>

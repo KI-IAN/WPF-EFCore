@@ -27,5 +27,16 @@ namespace WPFEFCore.RepositoryHelper
         }
 
 
+        public bool CreateStudent(DAL.Models.Student student)
+        {
+            _dbContext.Student.Add(student);
+            _dbContext.SaveChanges();
+
+            var studentId = student.StudentId;
+
+            return studentId > 0;
+        }
+
+
     }
 }
